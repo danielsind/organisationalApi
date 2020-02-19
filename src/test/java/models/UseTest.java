@@ -1,4 +1,42 @@
 package models;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+
+import static org.junit.Assert.*;
 
 public class UseTest {
+    public User setupNewUser(){
+        return new User("Apiyo", 1, "accountant");
+    }
+
+
+    @Before
+    public void setUp() throws Exception {
+    }
+
+    @After
+    public void tearDown() throws Exception {
+    }
+
+    @Test
+    public void userInstantiatesCorrectly() {
+        User newUser = setupNewUser();
+        assertEquals(true, newUser instanceof User);
+    }
+
+    @Test
+    public void getsUserNameReturnsUserNameCorrectly_String() {
+        User newUser = setupNewUser();
+        assertEquals("Apiyo", newUser.getUserName());
+    }
+
+    @Test
+    public void setsUserNameSetsUserNameCorrectly_Annette() {
+        User newUser = setupNewUser();
+        newUser.setUserName("Annette");
+        assertEquals("Annette", newUser.getUserName());
+    }
+
 }
