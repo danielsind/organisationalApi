@@ -22,4 +22,16 @@ public class NewsTest {
         News newNews = setupNews();
         assertEquals(true, newNews instanceof News);
     }
+    @Test
+    public void getContentGetsContentCorrectly_String() {
+        News newNews = setupNews();
+        assertEquals("Ceo, Bob Collimore, dies", newNews.getContent());
+    }
+
+    @Test
+    public void setContentSetsContentCorrectly() {
+        News newNews = setupNews();
+        newNews.setContent("Michael Joseph appointed new interim CEO");
+        assertEquals("Michael Joseph appointed new interim CEO", newNews.getContent());
+    }
 }
