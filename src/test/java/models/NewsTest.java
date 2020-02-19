@@ -34,4 +34,16 @@ public class NewsTest {
         newNews.setContent("Michael Joseph appointed new interim CEO");
         assertEquals("Michael Joseph appointed new interim CEO", newNews.getContent());
     }
+    @Test
+    public void newsReturnsTrueIfContentIsSame() {
+        News newNews = setupNews();
+        News anotherNews = setupNews();
+        assertEquals( true, newNews.equals(anotherNews));
+    }
+
+    @Test
+    public void getTypeGetsTypeCorrectly() {
+        News newNews = new News("Ceo, Bob Collimore, dies", 4 );
+        assertEquals(4, newNews.getDepartmentId());
+    }
 }
