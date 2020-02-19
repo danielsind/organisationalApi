@@ -17,4 +17,9 @@ public class NewsTest {
         return new News("Ceo, Bob Collimore, dies");
     }
 
+    @Test
+    public void newsInstantiatesCorrectly_true() {
+        News newNews = setupNews();
+        assertEquals(true, newNews instanceof News);
+    }
 }
