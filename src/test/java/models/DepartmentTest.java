@@ -35,5 +35,38 @@ public class DepartmentTest {
         newDepartment.setDepartmentName("statistics");
         assertEquals("statistics", newDepartment.getDepartmentName());
     }
+    @Test
+    public void getDescriptionReturnsDescriptionCorrectly_String() {
+        Department newDepartment = setupNewDepartment();
+        assertEquals("handles company's finance", newDepartment.getDescription());
+    }
+
+    @Test
+    public void setDescriptionSetsCorrectDescription_String() {
+        Department newDepartment = setupNewDepartment();
+        newDepartment.setDescription("handles company statistic and research");
+        assertEquals("handles company statistic and research", newDepartment.getDescription());
+    }
+
+    @Test
+    public void getNumbersOfEmployeesReturnsNumberOfEmployeesCorrectly_int() {
+        Department newDepartment = setupNewDepartment();
+        assertEquals(5, newDepartment.getNumberOfEmployees());
+    }
+
+    @Test
+    public void setNumbersOfEmployeesSetsCorrectNumberOfEmployees_int() {
+        Department newDepartment = setupNewDepartment();
+        newDepartment.setNumberOfEmployees(3);
+        assertEquals(3, newDepartment.getNumberOfEmployees());
+    }
+
+    @Test
+    public void departmentReturnsTrueIfDepartmentNameAndDescriptionAndNumberOfEmployeesAreSame() {
+        Department newDepartment = setupNewDepartment();
+        Department anotherDepartment = setupNewDepartment();
+        assertEquals(true, newDepartment.equals(anotherDepartment));
+    }
+
 }
 
