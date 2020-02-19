@@ -14,7 +14,7 @@ public class NewsTest {
     public void tearDown() throws Exception {
     }
     public News setupNews(){
-        return new News("Ceo, Bob Collimore, dies");
+        return new News("Instagram is updated");
     }
 
     @Test
@@ -25,14 +25,14 @@ public class NewsTest {
     @Test
     public void getContentGetsContentCorrectly_String() {
         News newNews = setupNews();
-        assertEquals("Ceo, Bob Collimore, dies", newNews.getContent());
+        assertEquals("Instagram is updated", newNews.getContent());
     }
 
     @Test
     public void setContentSetsContentCorrectly() {
         News newNews = setupNews();
-        newNews.setContent("Michael Joseph appointed new interim CEO");
-        assertEquals("Michael Joseph appointed new interim CEO", newNews.getContent());
+        newNews.setContent("Instagram is updated");
+        assertEquals("Instagram is updated", newNews.getContent());
     }
     @Test
     public void newsReturnsTrueIfContentIsSame() {
@@ -43,7 +43,7 @@ public class NewsTest {
 
     @Test
     public void getTypeGetsTypeCorrectly() {
-        News newNews = new News("Ceo, Bob Collimore, dies", 4 );
+        News newNews = new News("Instagram is updated", 4 );
         assertEquals(4, newNews.getDepartmentId());
     }
     @Test

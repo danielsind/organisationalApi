@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 public class DepartmentTest {
     public Department setupNewDepartment(){
-        return new Department("accounting", "handles company's finance", 5);
+        return new Department("IT", "Technology", 5);
     }
 
     @Before
@@ -26,26 +26,26 @@ public class DepartmentTest {
     @Test
     public void getDepartmentNameReturnsNameCorrectly_String() {
         Department newDepartment = setupNewDepartment();
-        assertEquals("accounting", newDepartment.getDepartmentName());
+        assertEquals("IT", newDepartment.getDepartmentName());
     }
 
     @Test
     public void setDepartmentNameSetsCorrectDepartmentName() {
         Department newDepartment = setupNewDepartment();
-        newDepartment.setDepartmentName("statistics");
-        assertEquals("statistics", newDepartment.getDepartmentName());
+        newDepartment.setDepartmentName("IT");
+        assertEquals("IT", newDepartment.getDepartmentName());
     }
     @Test
     public void getDescriptionReturnsDescriptionCorrectly_String() {
         Department newDepartment = setupNewDepartment();
-        assertEquals("handles company's finance", newDepartment.getDescription());
+        assertEquals("Technology", newDepartment.getDescription());
     }
 
     @Test
     public void setDescriptionSetsCorrectDescription_String() {
         Department newDepartment = setupNewDepartment();
-        newDepartment.setDescription("handles company statistic and research");
-        assertEquals("handles company statistic and research", newDepartment.getDescription());
+        newDepartment.setDescription("Technology");
+        assertEquals("Technology", newDepartment.getDescription());
     }
 
     @Test

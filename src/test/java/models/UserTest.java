@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 
 public class UserTest {
     public User setupNewUser(){
-        return new User("Apiyo", 1, "accountant");
+        return new User("Danny", 1, "IT");
     }
 
 
@@ -29,14 +29,14 @@ public class UserTest {
     @Test
     public void getsUserNameReturnsUserNameCorrectly_String() {
         User newUser = setupNewUser();
-        assertEquals("Apiyo", newUser.getUserName());
+        assertEquals("Danny", newUser.getUserName());
     }
 
     @Test
     public void setsUserNameSetsUserNameCorrectly_Annette() {
         User newUser = setupNewUser();
-        newUser.setUserName("Annette");
-        assertEquals("Annette", newUser.getUserName());
+        newUser.setUserName("Daniel");
+        assertEquals("Daniel", newUser.getUserName());
     }
     @Test
     public void getsDepartmentIdReturnsDepartmentIdCorrectly(){
@@ -54,14 +54,14 @@ public class UserTest {
     @Test
     public void getsRoleReturnsRoleCorrectly_String() {
         User newUser = setupNewUser();
-        assertEquals("accountant", newUser.getRole());
+        assertEquals("IT", newUser.getRole());
     }
 
     @Test
     public void setsRoleSetsRoleCorrectly_String() {
         User newUser = setupNewUser();
-        newUser.setRole("programmer");
-        assertEquals("programmer", newUser.getRole());
+        newUser.setRole("Developer");
+        assertEquals("Developer", newUser.getRole());
     }
 
     @Test
