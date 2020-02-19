@@ -23,5 +23,17 @@ public class DepartmentTest {
         Department newDepartment = setupNewDepartment();
         assertEquals(true, newDepartment instanceof Department);
     }
+    @Test
+    public void getDepartmentNameReturnsNameCorrectly_String() {
+        Department newDepartment = setupNewDepartment();
+        assertEquals("accounting", newDepartment.getDepartmentName());
+    }
+
+    @Test
+    public void setDepartmentNameSetsCorrectDepartmentName() {
+        Department newDepartment = setupNewDepartment();
+        newDepartment.setDepartmentName("statistics");
+        assertEquals("statistics", newDepartment.getDepartmentName());
+    }
 }
 
