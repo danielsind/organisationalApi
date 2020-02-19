@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class UseTest {
+public class UserTest {
     public User setupNewUser(){
         return new User("Apiyo", 1, "accountant");
     }
