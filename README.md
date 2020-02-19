@@ -2,10 +2,10 @@
 ## Author
 #### Daniel Sindet
 ## Description
-An applicatio that a user can create Department,And News and see available departments and the number of employees
+An application that a user can create Department,And News and see available departments and the number of employees
  
 ## Setup/Installation Requirements
-* Installed such JUnit, intellij, SDK, JDK.
+* Install JUnit, intellij, SDK, JDK.
 * Clone the project into your machine from https://github.com/danielsind/organisationalApi .
 * Gradle run javac organisationalNewsApi.java to compile and java organisationalNewsApi to run the program.
 ## Challenges
@@ -20,7 +20,7 @@ Ensuring all test pass
 * Gson.(Picking the Api format)
 * Postman(Testing the App.java routings)
 
-##Contacts
+## Contacts
 * 0790490682
 * danielsindet@gmail.com
 ## License
