@@ -1,6 +1,5 @@
 package dao;
 
-
 import models.Department;
 import models.News;
 import models.User;
@@ -45,12 +44,6 @@ public class Sql2oDepartmentDaoTest {
         System.out.println("connection closed");
     }
 
-
-    public Department setupNewDepartment(){
-        Department department = new Department("accounting", "handles company's finance", 5);
-        departmentDao.add(department);
-        return department;
-    }
     @Test
     public void addingDepartmentSetsId() throws Exception {
         Department testDepartment = setupNewDepartment();
@@ -61,7 +54,7 @@ public class Sql2oDepartmentDaoTest {
 
     @Test
     public void getAll() throws Exception{
-        Department testDepartment = new Department("accounting", "handles firm budget", 6);
+        Department testDepartment = new Department("IT", "Technology", 6);
         departmentDao.add(testDepartment);
         assertEquals(1, departmentDao.getAll().size());
     }
@@ -99,5 +92,36 @@ public class Sql2oDepartmentDaoTest {
         assertEquals(0, departmentDao.getAll().size());
     }
 
+    @Test
+    public void getAllUsersForADepartmentReturnsUsersCorrectly() {
+        Department testDepartment = new Department ("IT", "Technology", 5);
+        departmentDao.add(testDepartment);
+        int theId = testDepartment.getId();
+        User firstUser = new User("Danny", theId, "Developer");
+        userDao.add(firstUser);
+        User secondUser = new User("Daniel", theId, "Developer");
+        userDao.add(secondUser);
 
+        User[] users = {firstUser, secondUser};
+        assertEquals(Arrays.asList(users), departmentDao.getUsers(testDepartment.getId()));
+    }
+
+    @Test
+    public void getAllNewsForADepartmentReturnsUsersCorrectly() {
+        Department testDepartment = new Department ("IT", "Technology", 5);
+        departmentDao.add(testDepartment);
+        int theId = testDepartment.getId();
+        News firstNews = new News("Instagram is updated", theId);
+        newsDao.add(firstNews);
+        News secondNews = new News("Instagram is updated", theId);
+        newsDao.add(secondNews);
+
+        News[] news = {firstNews, secondNews};
+        assertEquals(Arrays.asList(news), departmentDao.getNews(testDepartment.getId()));
+    }
+    public Department setupNewDepartment(){
+        Department department = new Department("IT", "Technology", 5);
+        departmentDao.add(department);
+        return department;
+    }
 }

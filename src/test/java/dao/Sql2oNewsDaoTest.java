@@ -85,7 +85,7 @@ public class Sql2oNewsDaoTest {
     public void add_addDepartmentIdIntoDB_true() {
         Department testDepartment = new Department("IT", "Technology", 6);
         departmentDao.add(testDepartment);
-        News testNews = new News("Danny wins the Oscars", testDepartment.getId());
+        News testNews = new News("Instagram is updated", testDepartment.getId());
         newsDao.add(testNews);
         assertEquals(testNews.getDepartmentId(), testDepartment.getId());
     }
@@ -100,7 +100,7 @@ public class Sql2oNewsDaoTest {
     }
 
     public News setupNewsForDepartment(Department department) {
-        News news = new News("Danny wins Oscars", department.getId());
+        News news = new News("Instagram is updated", department.getId());
         newsDao.add(news);
         return news;
     }

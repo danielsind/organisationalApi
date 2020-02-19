@@ -98,7 +98,7 @@ public class Sql2oUserDaoTest {
     }
 
     public User setupUserForDepartment(Department department) {
-        User user = new User("Daniel", department.getId(), "Developer");
+        User user = new User("Danny", department.getId(), "Developer");
         userDao.add(user);
         return user;
     }
