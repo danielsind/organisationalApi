@@ -1,6 +1,6 @@
 # Organisational-Api
-##Author
-### Daniel Sindet
+## Author
+#### Daniel Sindet
 ## Description
 An applicatio that a user can create Department,And News and see available departments and the number of employees
  
