@@ -38,5 +38,38 @@ public class UseTest {
         newUser.setUserName("Annette");
         assertEquals("Annette", newUser.getUserName());
     }
+    @Test
+    public void getsDepartmentIdReturnsDepartmentIdCorrectly(){
+        User newUser = setupNewUser();
+        assertEquals(1, newUser.getDepartmentId());
+    }
+
+    @Test
+    public void setsDepartmentIdSetsDepartmentIdCorrectly() {
+        User newUser = setupNewUser();
+        newUser.setDepartmentId(2);
+        assertEquals(2, newUser.getDepartmentId());
+    }
+
+    @Test
+    public void getsRoleReturnsRoleCorrectly_String() {
+        User newUser = setupNewUser();
+        assertEquals("accountant", newUser.getRole());
+    }
+
+    @Test
+    public void setsRoleSetsRoleCorrectly_String() {
+        User newUser = setupNewUser();
+        newUser.setRole("programmer");
+        assertEquals("programmer", newUser.getRole());
+    }
+
+    @Test
+    public void userReturnsTrueIfUserNameAndDepartmentIdAndRoleAreSame() {
+        User newUser = setupNewUser();
+        User anotherUser = setupNewUser();
+        assertEquals(true, newUser.equals(anotherUser));
+    }
+
 
 }
