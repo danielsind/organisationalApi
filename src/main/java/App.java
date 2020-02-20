@@ -91,11 +91,9 @@ public class App {
             res.type("application/json");
             System.out.println(departmentDao.getAll());
 
-            if(departmentDao.getAll().size() > 0){
+            if (departmentDao.getAll().size() > 0) {
                 return gson.toJson(departmentDao.getAll());
-            }
-
-            else {
+            } else {
                 return "{\"message\":\"I'm sorry, but no departments are currently listed in the database.\"}";
             }
 
@@ -105,7 +103,7 @@ public class App {
 
             int departmentId = Integer.parseInt(req.params("id"));
             Department departmentToFind = departmentDao.findById(departmentId);
-            if (departmentToFind == null){
+            if (departmentToFind == null) {
                 throw new ApiException(404, String.format("No department with the id: \"%s\" exists", req.params("id")));
             }
             res.type("application/json");
@@ -118,7 +116,7 @@ public class App {
             Department departmentToFind = departmentDao.findById(departmentId);
             List<News> allNews;
 
-            if (departmentToFind == null){
+            if (departmentToFind == null) {
                 throw new ApiException(404, String.format("No department with the id: \"%s\" exists", req.params("id")));
             }
 
@@ -132,11 +130,11 @@ public class App {
             Department departmentToFind = departmentDao.findById(departmentId);
             List<User> allUsers;
 
-            if (departmentToFind == null){
+            if (departmentToFind == null) {
                 throw new ApiException(404, String.format("No department with the id: \"%s\" exists", req.params("id")));
             }
 
-            allUsers = userDao. getAllUsersByDepartment(departmentId);
+            allUsers = userDao.getAllUsersByDepartment(departmentId);
             res.type("application/json");
             return gson.toJson(allUsers);
         });
@@ -170,56 +168,57 @@ public class App {
 
         //templates
 
-        get("/departments/new", (request, response) -> {
-            Map<String, Object> model = new HashMap<String, Object>();
-            return new ModelAndView(model, "department-form.hbs");
-        },new HandlebarsTemplateEngine());
-
-        post("/departments", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            String departmentName = request.queryParams("departmentName");
-            String description = request.queryParams("description");
-            int numberOfEmployees = Integer.parseInt(request.queryParams("numberOfEmployees"));
-            Department newDepartment = new Department(departmentName, description, numberOfEmployees);
-            departmentDao.add(newDepartment);
-            model.put("departments", departmentDao.getAll());
-            return new ModelAndView(model, "department.hbs");
-        }, new HandlebarsTemplateEngine());
-        get("/departments", (request, response) -> {
-            Map<String, Object> model = new HashMap<String, Object>();
-            return new ModelAndView(model, "department.hbs");
-        },new HandlebarsTemplateEngine());
-        get("/users", (request, response) -> {
-            Map<String, Object> model = new HashMap<String, Object>();
-            return new ModelAndView(model, "user.hbs");
-        },new HandlebarsTemplateEngine());
-        post("/users", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            String userName = request.queryParams("userName");
-            int departmentId = Integer.parseInt(request.queryParams("departmentId"));
-            String role = request.queryParams("role");
-            User newUser = new User(userName, departmentId, role);
-            userDao.add(newUser);
-            model.put("users", userDao.getAll());
-            return new ModelAndView(model, "user.hbs");
-        }, new HandlebarsTemplateEngine());
-        get("/news", (request, response) -> {
-            Map<String, Object> model = new HashMap<String, Object>();
-            return new ModelAndView(model, "news-form.hbs");
-        },new HandlebarsTemplateEngine());
-        post("/news", (request, response) -> {
-            Map<String, Object> model = new HashMap<>();
-            String content = request.queryParams("content");
-            int departmentId = Integer.parseInt(request.queryParams("departmentId"));
-            News newNews = new News(content, departmentId);
-            newsDao.add(newNews);
-            model.put("news", newsDao.getAll());
-            return new ModelAndView(model, "news.hbs");
-        }, new HandlebarsTemplateEngine());
-        get("/", (request, response) -> {
-            Map<String, Object> model = new HashMap<String, Object>();
-            return new ModelAndView(model, "index.hbs");
-        },new HandlebarsTemplateEngine());
-
+//        get("/departments/new","application/json", (request, response) -> {
+//            Map<String, Object> model = new HashMap<String, Object>();
+//            return new ModelAndView(model, "department-form.hbs");
+//        },new HandlebarsTemplateEngine());
+//
+//        post("/departments", (request, response) -> {
+//            Map<String, Object> model = new HashMap<>();
+//            String departmentName = request.queryParams("departmentName");
+//            String description = request.queryParams("description");
+//            int numberOfEmployees = Integer.parseInt(request.queryParams("numberOfEmployees"));
+//            Department newDepartment = new Department(departmentName, description, numberOfEmployees);
+//            departmentDao.add(newDepartment);
+//            model.put("departments", departmentDao.getAll());
+//            return new ModelAndView(model, "department.hbs");
+//        }, new HandlebarsTemplateEngine());
+//        get("/departments", (request, response) -> {
+//            Map<String, Object> model = new HashMap<String, Object>();
+//            return new ModelAndView(model, "department.hbs");
+//        },new HandlebarsTemplateEngine());
+//        get("/users", (request, response) -> {
+//            Map<String, Object> model = new HashMap<String, Object>();
+//            return new ModelAndView(model, "user.hbs");
+//        },new HandlebarsTemplateEngine());
+//        post("/users", (request, response) -> {
+//            Map<String, Object> model = new HashMap<>();
+//            String userName = request.queryParams("userName");
+//            int departmentId = Integer.parseInt(request.queryParams("departmentId"));
+//            String role = request.queryParams("role");
+//            User newUser = new User(userName, departmentId, role);
+//            userDao.add(newUser);
+//            model.put("users", userDao.getAll());
+//            return new ModelAndView(model, "user.hbs");
+//        }, new HandlebarsTemplateEngine());
+//        get("/news", (request, response) -> {
+//            Map<String, Object> model = new HashMap<String, Object>();
+//            return new ModelAndView(model, "news-form.hbs");
+//        },new HandlebarsTemplateEngine());
+//        post("/news", (request, response) -> {
+//            Map<String, Object> model = new HashMap<>();
+//            String content = request.queryParams("content");
+//            int departmentId = Integer.parseInt(request.queryParams("departmentId"));
+//            News newNews = new News(content, departmentId);
+//            newsDao.add(newNews);
+//            model.put("news", newsDao.getAll());
+//            return new ModelAndView(model, "news.hbs");
+//        }, new HandlebarsTemplateEngine());
+//        get("/", (request, response) -> {
+//            Map<String, Object> model = new HashMap<String, Object>();
+//            return new ModelAndView(model, "index.hbs");
+//        },new HandlebarsTemplateEngine());
+//
+//    }
     }
 }
